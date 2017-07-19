@@ -7,11 +7,30 @@ import styles from './styles';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getArticlesList } from '../../../actions/articlesActions';
+import LinearGradient from 'react-native-linear-gradient';
+import Header from './ArticlesListComponents/Header';
+import { MenuContext } from 'react-native-popup-menu';
 
-class SourcesListScreen extends Component{
+class ArticlesListScreen extends Component{
     static navigationOptions = {
         header:null,
     };
+
+     constructor(props){
+        super(props);
+        this.state = {
+            searchText:'',
+        
+        }
+    }
+
+    setSearchText = (searchText) => {
+        this.setState({searchText});
+    };
+
+    sortingListView = (sortBy) => {
+        //console.log('sort by ', sortBy);
+    }
 
     componentWillMount(){
         const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
@@ -21,9 +40,16 @@ class SourcesListScreen extends Component{
     render(){
         const { isLoading, articles } = this.props;
         return(
-           <View>
-               <Text>{'Articles list screen'}</Text>
-           </View>
+             <MenuContext style={{ flex: 1 }}> 
+                 <LinearGradient colors={['#77A1D3', '#79CBCA', '#E684AE']} style={styles.container}>
+                        <Header
+                            searchText={this.state.searchText}
+                            setSearchText={this.setSearchText}
+                            sortingListView={this.sortingListView}                            
+                        />   
+                        <View style={styles.listContainer} />     
+                </LinearGradient>
+             </MenuContext>
         )
     }
 }
@@ -35,4 +61,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default connect(mapStateToProps,mapDispatchToProps )(SourcesListScreen);
+export default connect(mapStateToProps,mapDispatchToProps )(ArticlesListScreen);
