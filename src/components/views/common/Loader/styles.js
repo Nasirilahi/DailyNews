@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         padding: 8,
     },
     gray: {
-        backgroundColor: '#cccccc',
+        backgroundColor: 'slateblue',
     }
 });
 export default styles;

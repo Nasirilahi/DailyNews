@@ -12,6 +12,7 @@ const Loader = () =>{
                 animating={true}
                 style={[styles.centering, {height: 80}]}
                 size="large"
+                color='slateblue'
             />
         </View>
     );

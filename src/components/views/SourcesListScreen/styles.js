@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         justifyContent:'space-between',
         alignItems:'center',
-        backgroundColor:'midnightblue',
+        marginBottom:10,
+        backgroundColor:'slateblue',
     },
     categoryText:{
         color:COLORS.white,

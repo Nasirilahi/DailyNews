@@ -15,6 +15,7 @@ import { getSourcesList } from '../../../actions/sourceActions';
 import Loader from '../common/Loader';
 import CategorySelector from './SourceListComponents/CategorySelector';
 import { MenuContext } from 'react-native-popup-menu';
+import SourcesListContainer from './SourceListComponents/SourcesListContainer';
 
 class SourcesListScreen extends Component{
     static navigationOptions = {
@@ -62,7 +63,7 @@ class SourcesListScreen extends Component{
                              <CategorySelector selectedCategory={selectedCategory} onOptionSelect={this.onOptionSelect}/>
                         </View>
                          {
-                             isLoading ? <Loader /> : null
+                             isLoading ? <Loader /> : <SourcesListContainer sources={sources} />
                          }
                     </View>
                 </LinearGradient>
