@@ -10,12 +10,11 @@ import ListRow from './ListRow';
 
  _keyExtractor = (item, index) => item.id;
 
-const SourcesListContainer = ({sources}) => {
-
+const SourcesListContainer = ({sources, onSourceSelect}) => {
     return(
         <FlatList
             data={sources}
-            renderItem={({item}) => <ListRow item={item} />}
+            renderItem={({item}) => <ListRow item={item} onSourceSelect={onSourceSelect} />}
              keyExtractor={_keyExtractor}
         />
     );

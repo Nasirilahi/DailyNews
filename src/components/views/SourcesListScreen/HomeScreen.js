@@ -47,6 +47,11 @@ class SourcesListScreen extends Component{
          });
     };
 
+    onSourceSelect = (selectedSource) => {
+        const { navigation } = this.props;
+        navigation.navigate('ArticlesList', {source:selectedSource});
+    }
+
     render(){
         const { isLoading, sources } = this.props;
         const { selectedCategory } = this.state;
@@ -63,7 +68,7 @@ class SourcesListScreen extends Component{
                              <CategorySelector selectedCategory={selectedCategory} onOptionSelect={this.onOptionSelect}/>
                         </View>
                          {
-                             isLoading ? <Loader /> : <SourcesListContainer sources={sources} />
+                             isLoading ? <Loader /> : <SourcesListContainer sources={sources} onSourceSelect={this.onSourceSelect}/>
                          }
                     </View>
                 </LinearGradient>
