@@ -51,13 +51,16 @@ class SourcesListScreen extends Component{
         const { selectedCategory } = this.state;
         return(
              <MenuContext>
-                  <LinearGradient colors={['#77A1D3', '#79CBCA', '#E684AE']} style={styles.container}>
+                  <LinearGradient colors={['#77A1D3', '#79CBCA', '#E684AE']} style={styles.outerContainer}>
                     <StatusBar 
                     translucent
                     barStyle="light-content"
                     />
-                    <View style={{marginTop:20, flex:1}}>
-                         <CategorySelector selectedCategory={selectedCategory} onOptionSelect={this.onOptionSelect}/>
+                    <View style={styles.mainContainer}>
+                        <View style={styles.categorySelector}>
+                            <Text style={styles.categoryText}>{'News Category'}</Text>
+                             <CategorySelector selectedCategory={selectedCategory} onOptionSelect={this.onOptionSelect}/>
+                        </View>
                          {
                              isLoading ? <Loader /> : null
                          }

@@ -1,45 +1,29 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+import COLORS from '../../../constants/colorConstants';
+
+const { width , height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-    container:{
+    outerContainer:{
         flex:1,
-        backgroundColor:'#3E392E',
     },
-    headerContainer:{
+    mainContainer: {
+        marginTop:30, 
         flex:1,
-        flexDirection:'row',
         alignItems:'center',
     },
-    listContainer:{
-        flex:9,
+    categorySelector:{
+        width: width-20,
         flexDirection:'row',
-        paddingHorizontal:15,
-    },
-    searchContainer:{
-        flexDirection:'row',
-        flex:1,
-        marginLeft:15,
-        marginRight:10,
+        paddingVertical:10,
+        paddingHorizontal:10,
+        justifyContent:'space-between',
         alignItems:'center',
+        backgroundColor:'steelblue',
     },
-    textInput:{
-        flex:1,
-        marginLeft:10,
-        color:'white',
-    },
-    filterSortContainer:{
-        flexDirection:'row',
-        marginRight:15,
-    },
-    menuTrigger:{
-        marginLeft:10,
-        width:40,
-        alignItems:'center'
-    },
-    menuOptions:{
-    },
-    menuOpetionsText:{
-        color:'grey',
+    categoryText:{
+        color:COLORS.white,
+        fontSize:20,
     }
 });
 
