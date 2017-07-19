@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         justifyContent:'space-between',
         alignItems:'center',
-        backgroundColor:'steelblue',
+        backgroundColor:'midnightblue',
     },
     categoryText:{
         color:COLORS.white,

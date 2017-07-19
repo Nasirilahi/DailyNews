@@ -73,7 +73,6 @@ class SourcesListScreen extends Component{
 
 const mapStateToProps = ({sourcelist: { isLoading,sources }})=>({ isLoading, sources });
 
-
 const mapDispatchToProps = (dispatch) => ({
     getSourcesList: bindActionCreators(getSourcesList, dispatch)
 })
