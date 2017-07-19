@@ -1,0 +1,1 @@
+export const API_URL = 'https://newsapi.org/v1/sources';
