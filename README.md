@@ -1,6 +1,6 @@
 # DailyNews
 
-This is a react-native Android/iOS application for creating a user profile and showing user profile.
+This is a react-native Android/iOS application for showing list of news sources. User can select category from drop down and then can see list only for that category.On clicking a source user can see list of articles for that source.
 
 This is developed on React native with Redux architecture.
 
