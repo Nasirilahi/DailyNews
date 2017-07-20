@@ -21,9 +21,11 @@ const Header = ({searchText,setSearchText, sortingListView})=>{
                 searchText={searchText}
                 setSearchText={setSearchText}
             />
+            {/*
             <FilterSort
                 sortingListView={sortingListView}
             />
+            */}
         </View>
     );
 };

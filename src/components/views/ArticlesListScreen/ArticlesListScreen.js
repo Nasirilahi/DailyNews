@@ -57,7 +57,9 @@ class ArticlesListScreen extends Component{
     }
 
     onArticleSelect = (article) =>{
-        //console.log('articlearticlearticle',article);
+        const { url } = article;
+        const { navigation } = this.props;
+        navigation.navigate('ArticleWebView', {url:url});
     };
 
     render(){
