@@ -25,8 +25,8 @@ class ArticlesListScreen extends Component{
         }
     }
     componentWillMount(){
-        const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
-        getArticlesList(source);
+       // const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
+        this.props.getArticlesList('abc-news-au');
     }
 
     componentWillReceiveProps(nextProps){
@@ -48,7 +48,7 @@ class ArticlesListScreen extends Component{
     };
 
     render(){
-        const { articles } = this.state;
+        const { articles,searchText } = this.state;
         return(
              <MenuContext style={{ flex: 1 }}> 
                  <View style={styles.container}>
@@ -56,8 +56,14 @@ class ArticlesListScreen extends Component{
                             searchText={this.state.searchText}
                             setSearchText={this.setSearchText}
                             sortingListView={this.sortingListView}                            
-                        />   
-                        <ArticlesListContainer articles={articles} onArticleSelect={this.onArticleSelect}  />     
+                        /> 
+                        {  
+                            articles.length > 0 &&<ArticlesListContainer 
+                                articles={articles} 
+                                onArticleSelect={this.onArticleSelect} 
+                                searchText={searchText} 
+                            />   
+                        }  
                 </View>
              </MenuContext>
         )

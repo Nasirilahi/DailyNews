@@ -22,9 +22,8 @@ const Row = ({item: {
     url,
     urlToImage,
 }, onArticleSelect, item}) =>{
-    //console.log('item',item);
     return(
-        <TouchableOpacity style={styles.container} onPress={() => onArticleSelect(title)}>
+        <TouchableOpacity style={styles.container} onPress={() => onArticleSelect(item)}>
            <View style={styles.dataContainer}>
                <Text style={styles.titleText}>{`${title}`}</Text>
                <View style={styles.detailContainer}>
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
         color:'rgb(255,255,255)',
     },
     fielText:{
-        color :'#D1A828',
+        color :'darkturquoise',
         fontWeight:'bold'
     },
 });

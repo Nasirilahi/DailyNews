@@ -9,7 +9,7 @@ const AppNavigator = StackNavigator({
     SourcesList : { screen: SourcesListScreen },
     ArticlesList: { screen :ArticlesListScreen},
 },{
-    initialRouteName: 'SourcesList',
+    initialRouteName: 'ArticlesList',
     mode: 'modal'
 }
 )
