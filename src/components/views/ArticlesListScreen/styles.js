@@ -3,18 +3,21 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor:'#483d8b',
     },
     headerContainer:{
         flex:1,
         flexDirection:'row',
         alignItems:'center',
-        marginTop:20,
         marginHorizontal:10,
+        marginTop:20,
         borderBottomColor: 'black',
         borderBottomWidth:2,
     },
     listContainer:{
         flex:9,
+        marginTop:20,
+        marginHorizontal:10,
     },
     searchContainer:{
         flexDirection:'row',
@@ -40,7 +43,8 @@ const styles = StyleSheet.create({
     menuOptions:{
     },
     menuOpetionsText:{
-        color:'grey',
+        color:'black',
+        fontSize:14,
     }
 });
 

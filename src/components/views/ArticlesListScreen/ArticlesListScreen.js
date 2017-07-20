@@ -10,6 +10,7 @@ import { getArticlesList } from '../../../actions/articlesActions';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from './ArticlesListComponents/Header';
 import { MenuContext } from 'react-native-popup-menu';
+import ArticlesListContainer from './ArticlesListComponents/ArticlesListContainer';
 
 class ArticlesListScreen extends Component{
     static navigationOptions = {
@@ -20,7 +21,17 @@ class ArticlesListScreen extends Component{
         super(props);
         this.state = {
             searchText:'',
-        
+            articles:[],
+        }
+    }
+    componentWillMount(){
+        const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
+        getArticlesList(source);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.articles.length > 0){
+            this.setState({articles:nextProps.articles});
         }
     }
 
@@ -32,23 +43,22 @@ class ArticlesListScreen extends Component{
         //console.log('sort by ', sortBy);
     }
 
-    componentWillMount(){
-        const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
-        getArticlesList(source);
-    }
+    onArticleSelect = (article) =>{
+        console.log('articlearticlearticle',article);
+    };
 
     render(){
-        const { isLoading, articles } = this.props;
+        const { articles } = this.state;
         return(
              <MenuContext style={{ flex: 1 }}> 
-                 <LinearGradient colors={['#77A1D3', '#79CBCA', '#E684AE']} style={styles.container}>
+                 <View style={styles.container}>
                         <Header
                             searchText={this.state.searchText}
                             setSearchText={this.setSearchText}
                             sortingListView={this.sortingListView}                            
                         />   
-                        <View style={styles.listContainer} />     
-                </LinearGradient>
+                        <ArticlesListContainer articles={articles} onArticleSelect={this.onArticleSelect}  />     
+                </View>
              </MenuContext>
         )
     }
