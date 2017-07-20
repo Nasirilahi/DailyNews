@@ -10,7 +10,6 @@ import {
 
 const ArticleWebView = ({navigation})=>{
     const {state:{ params:{ url }}} = navigation;
-    console.log('urlurlurlurl',url);
     return(
            <WebView
                 source={{uri: url}}
@@ -19,7 +18,7 @@ const ArticleWebView = ({navigation})=>{
 };
 ArticleWebView.navigationOptions = ({ navigation }) => ({
          title: `Articles Web View`,
-         headerStyle:{backgroundColor:'goldenrod'},
+         headerStyle:{backgroundColor:'goldenrod', paddingTop:20, height:70,},
          headerTitleStyle:{color:'white', fontSize:24,},
          gesturesEnabled:false,
          headerLeft:( <TouchableOpacity style={{marginLeft:10}} onPress={() => navigation.goBack()}>

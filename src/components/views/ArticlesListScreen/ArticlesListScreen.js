@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 class ArticlesListScreen extends Component{
     static navigationOptions = ({ navigation }) => ({
          title: `Articles`,
-         headerStyle:{backgroundColor:'goldenrod'},
+         headerStyle:{backgroundColor:'goldenrod', paddingTop:20, height:70,},
          headerTitleStyle:{color:'white', fontSize:24,},
          gesturesEnabled:false,
          headerLeft:( <TouchableOpacity style={{marginLeft:10}} onPress={() => navigation.goBack()}>
