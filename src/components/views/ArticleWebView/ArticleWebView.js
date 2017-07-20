@@ -10,10 +10,11 @@ import {
 
 const ArticleWebView = ({navigation})=>{
     const {state:{ params:{ url }}} = navigation;
+    console.log('urlurlurlurl',url);
     return(
-        <View>
-            <Text>{url}</Text>
-        </View>
+           <WebView
+                source={{uri: url}}
+            />
     );
 };
 
