@@ -20,10 +20,9 @@ const Row = ({item: {
     name,
     url,
     id,
-   
-}, onSourceSelect}) =>{
+},item,  onSourceSelect}) =>{
     return(
-        <TouchableOpacity style={styles.container} onPress={() => onSourceSelect(id)}>
+        <TouchableOpacity style={styles.container} onPress={() => onSourceSelect(item)}>
            <View style={styles.dataContainer}>
                <Text style={styles.titleText}>{`${name}`}</Text>
                <View style={styles.detailContainer}>

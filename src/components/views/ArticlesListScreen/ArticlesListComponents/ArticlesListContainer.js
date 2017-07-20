@@ -9,6 +9,25 @@ import styles from '../styles';
 import ListRow from './ArticlesListRow';
 import NotFoundView from './NotFoundView';
 
+const inArray = (array, el) => {
+  for ( var i = array.length; i--; ) {
+    if ( array[i] === el ) return true;
+  }
+  return false;
+}
+
+const  isEqArrays = (arr1, arr2) => {
+  if ( arr1.length !== arr2.length ) {
+    return false;
+  }
+  for ( var i = arr1.length; i--; ) {
+    if ( !inArray( arr2, arr1[i] ) ) {
+      return false;
+    }
+  }
+  return true;
+}
+
 class ArticlesListContainer extends Component{
      constructor() {
         super();
@@ -24,6 +43,9 @@ class ArticlesListContainer extends Component{
        if(nextProps.searchText !== ''){
            this.searchResult(nextProps.searchText);
        }
+        if(!isEqArrays(nextProps.articles, this.props.articles)){
+            this.setState({articles: nextProps.articles});
+        }
     };
 
     searchResult = (value) => {
@@ -39,8 +61,7 @@ class ArticlesListContainer extends Component{
             this.setState({noResult:true});
         }
     };
-
-
+    
      _keyExtractor = (item, index) => index;
 
     render(){

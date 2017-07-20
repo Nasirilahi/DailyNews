@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     View, 
     Text,
+    TouchableOpacity
 } from 'react-native';
 import styles from './styles';
 import { bindActionCreators } from 'redux';
@@ -11,11 +12,19 @@ import LinearGradient from 'react-native-linear-gradient';
 import Header from './ArticlesListComponents/Header';
 import { MenuContext } from 'react-native-popup-menu';
 import ArticlesListContainer from './ArticlesListComponents/ArticlesListContainer';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class ArticlesListScreen extends Component{
-    static navigationOptions = {
-        header:null,
-    };
+    static navigationOptions = ({ navigation }) => ({
+         title: `Articles`,
+         headerStyle:{backgroundColor:'goldenrod'},
+         headerTitleStyle:{color:'white', fontSize:24,},
+         gesturesEnabled:false,
+         headerLeft:( <TouchableOpacity style={{marginLeft:10}} onPress={() => navigation.goBack()}>
+                            <Icon name="md-arrow-back" size={30} color="#FFF" />
+                    </TouchableOpacity>
+        ),
+    });
 
      constructor(props){
         super(props);
@@ -25,8 +34,8 @@ class ArticlesListScreen extends Component{
         }
     }
     componentWillMount(){
-       // const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
-        this.props.getArticlesList('abc-news-au');
+        const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;      
+        getArticlesList(source.id);
     }
 
     componentWillReceiveProps(nextProps){
@@ -40,30 +49,36 @@ class ArticlesListScreen extends Component{
     };
 
     sortingListView = (sortBy) => {
-        //console.log('sort by ', sortBy);
+        const { navigation:{ state: { params: { source }}}, getArticlesList} = this.props;
+        const { sortBysAvailable  } = source;
+        const isSortAvailable = sortBysAvailable.find( sort => sort === sortBy );
+        if(isSortAvailable)
+         this.props.getArticlesList(source.id, isSortAvailable);
     }
 
     onArticleSelect = (article) =>{
-        console.log('articlearticlearticle',article);
+        //console.log('articlearticlearticle',article);
     };
 
     render(){
         const { articles,searchText } = this.state;
         return(
-             <MenuContext style={{ flex: 1 }}> 
+             <MenuContext> 
                  <View style={styles.container}>
                         <Header
                             searchText={this.state.searchText}
                             setSearchText={this.setSearchText}
                             sortingListView={this.sortingListView}                            
                         /> 
-                        {  
-                            articles.length > 0 &&<ArticlesListContainer 
-                                articles={articles} 
-                                onArticleSelect={this.onArticleSelect} 
-                                searchText={searchText} 
-                            />   
-                        }  
+                        <View style={styles.listMainContainer}>
+                            {  
+                                articles.length > 0 &&<ArticlesListContainer 
+                                    articles={articles} 
+                                    onArticleSelect={this.onArticleSelect} 
+                                    searchText={searchText} 
+                                />   
+                             }  
+                        </View>
                 </View>
              </MenuContext>
         )

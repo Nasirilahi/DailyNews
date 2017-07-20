@@ -9,13 +9,16 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         alignItems:'center',
+        alignSelf:'flex-start',
         marginHorizontal:10,
-        marginTop:20,
         borderBottomColor: 'black',
         borderBottomWidth:2,
     },
-    listContainer:{
+    listMainContainer:{
         flex:9,
+    },
+    listContainer:{
+        flex:1,
         marginTop:20,
         marginHorizontal:10,
     },
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
     menuTrigger:{
         marginLeft:10,
         width:40,
-        alignItems:'center'
+        alignItems:'center',
     },
     menuOptions:{
     },
